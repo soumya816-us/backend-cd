@@ -33,9 +33,6 @@ pipeline {
         }
 
         stage('Deploy'){
-            when{
-                expression { params.deploy }
-            }
             steps{
               withAWS(region: 'us-east-1', credentials: 'aws-creds') {
                     sh """
