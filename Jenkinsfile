@@ -15,7 +15,7 @@ pipeline {
         DEBUG = 'true'
         appVersion = '' // this will become global, we can use across pipeline
         region = 'us-east-1'
-        account_id = '329599629534'
+        account_id = ''
         project = 'expense'
         environment = ''
         component = 'backend'
@@ -27,6 +27,21 @@ pipeline {
                 script{
                     environment = params.ENVIRONMENT
                     appVersion = params.version
+                    account_id = pipelineGlobals.getAccountID(environment)
+                }
+            }
+
+        }
+
+         stage('Integration tests'){
+            when{
+                expression {params.ENVIRONMENT == 'qa'}
+            }
+            steps{
+                script{
+                   sh """
+                    echo "Run integration tests"
+                   """
                 }
             }
 
