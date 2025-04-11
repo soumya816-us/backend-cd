@@ -8,7 +8,7 @@ pipeline {
     }
     parameters{
          booleanParam(name: 'deploy', defaultValue: false, description: 'select to deploy or not')
-         choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'uat','pre-pod','pod'], description: 'Select your Environment')
+         choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'uat','pre-prod','prod'], description: 'Select your Environment')
          string(name: 'version', description: 'Enter your application version')
          string(name: 'jira-id',  description: 'Enter your jira id')
     }
